@@ -766,11 +766,14 @@ nav a:hover, nav a.active {
     align-items: flex-end;
     gap: 30px;
     margin-top: 40px;
+    width: 100%;
 }
 
 .today-thumbs {
     display: flex;
     align-items: flex-end;
+    flex: 1 1 auto;
+    min-width: 0;
 }
 
 .t-thumb {
@@ -802,6 +805,7 @@ nav a:hover, nav a.active {
     align-items: center;
     gap: 14px;
     padding-bottom: 4px;
+    flex: 0 0 auto;
 }
 
 .today-progress {
@@ -921,10 +925,12 @@ nav a:hover, nav a.active {
         grid-row: auto; 
     }
     .today-slider-nav {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 14px;
     }
+    .today-thumbs { flex: 1 1 auto; }
+    .today-pagination { flex: 0 0 auto; }
     .t-thumb {
         min-width: 68px;
         height: 42px;
@@ -3287,4 +3293,25 @@ nav a:hover, nav a.active {
         font-size: 12px;
         text-align: center;
     }
+}
+
+@media (max-width: 480px) {
+    .today-slider-nav {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 14px;
+    }
+    .today-thumbs { width: 100%; }
+    .t-thumb {
+        flex: 1 1 0;
+        min-width: 0;
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+    .t-thumb.active { min-width: 0; }
+    .today-pagination {
+        justify-content: flex-end;
+        width: 100%;
+    }
+    .today-progress { flex: 1 1 auto; max-width: 110px; }
 }
