@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    // ============ HERO SLIDER ============
     const thumbs = document.querySelectorAll('.thumb');
     const pageNums = document.querySelectorAll('.page-num');
     const heroSlides = document.getElementById('heroSlides');
@@ -8,18 +7,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const totalSlides = 3;
 
     function setActiveSlide(index) {
-        // Cập nhật nút active
         thumbs.forEach(t => t.classList.remove('active'));
         pageNums.forEach(p => p.classList.remove('active'));
         if (thumbs[index]) thumbs[index].classList.add('active');
         if (pageNums[index]) pageNums[index].classList.add('active');
 
-        // Trượt ảnh
         if (heroSlides) {
             heroSlides.style.transform = `translateX(-${index * 100}%)`;
         }
 
-        // Cập nhật thanh tiến trình
         if (progressFill) {
             const percentage = ((index + 1) / totalSlides) * 100;
             progressFill.style.width = percentage + '%';
@@ -38,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // ============ PROPERTY TABS ============
     const propertyTabs = document.querySelectorAll('.property-tabs button');
     propertyTabs.forEach(tab => {
         tab.addEventListener('click', () => {
@@ -47,7 +42,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // ============ TESTIMONIAL NAV ============
     const testimonialBtns = document.querySelectorAll('.testimonial-nav .nav-btn');
     testimonialBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -56,7 +50,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // ============ MOBILE MENU ============
     const header = document.querySelector('header');
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelectorAll('nav a');
@@ -80,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 });
-// ============ TODAY SELLS SLIDER ============
+
 const todayThumbs = document.querySelectorAll('.t-thumb');
 const todayPageNums = document.querySelectorAll('.today-page-num');
 const todaySlides = document.getElementById('todaySlides');
@@ -88,18 +81,16 @@ const todayProgressFill = document.getElementById('todayProgressFill');
 const todayTotalSlides = 3;
 
 function setActiveTodaySlide(index) {
-    // Cập nhật nút active
+
     todayThumbs.forEach(t => t.classList.remove('active'));
     todayPageNums.forEach(p => p.classList.remove('active'));
     if (todayThumbs[index]) todayThumbs[index].classList.add('active');
     if (todayPageNums[index]) todayPageNums[index].classList.add('active');
 
-    // Trượt ảnh
     if (todaySlides) {
         todaySlides.style.transform = `translateX(-${index * 100}%)`;
     }
 
-    // Cập nhật thanh tiến trình
     if (todayProgressFill) {
         const percentage = ((index + 1) / todayTotalSlides) * 100;
         todayProgressFill.style.width = percentage + '%';
