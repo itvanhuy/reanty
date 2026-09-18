@@ -56,6 +56,29 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // ============ MOBILE MENU ============
+    const header = document.querySelector('header');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelectorAll('nav a');
+
+    if (header && menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            const isOpen = header.classList.toggle('menu-open');
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+            menuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+            menuToggle.innerHTML = `<i class="fas fa-${isOpen ? 'times' : 'bars'}"></i>`;
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                header.classList.remove('menu-open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', 'Open menu');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+    }
+
 });
 // ============ TODAY SELLS SLIDER ============
 const todayThumbs = document.querySelectorAll('.t-thumb');

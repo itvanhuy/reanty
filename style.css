@@ -207,6 +207,20 @@ nav a:hover, nav a.active {
 }
 .header-actions .login:hover { color: var(--primary); }
 
+.menu-toggle {
+    display: none;
+    width: 42px;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--white);
+    color: var(--dark);
+    font-size: 18px;
+    cursor: pointer;
+}
+
 /* 03. Hero */
 .hero {
     background: var(--gray-light);
@@ -1463,7 +1477,7 @@ nav a:hover, nav a.active {
     .unit-circle {
         left: 50%;
         transform: translateX(-50%);
-        bottom: -70px;
+        bottom: -50px;
         width: 100px;
         height: 100px;
     }
@@ -2938,7 +2952,39 @@ nav a:hover, nav a.active {
     }
 
     nav {
+        position: absolute;
+        top: 100%;
+        left: 16px;
+        right: 16px;
         display: none;
+        padding: 12px;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        box-shadow: var(--shadow-md);
+    }
+
+    header.menu-open nav {
+        display: block;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    nav a {
+        display: block;
+        padding: 12px 10px;
+        border-bottom: 1px solid var(--border);
+    }
+
+    nav li:last-child a {
+        border-bottom: 0;
+    }
+
+    .menu-toggle {
+        display: inline-flex;
     }
 
     .header-actions {
@@ -2998,7 +3044,17 @@ nav a:hover, nav a.active {
     }
 
     .header-actions {
+        order: 2;
         gap: 10px;
+    }
+
+    .menu-toggle {
+        order: 3;
+        flex-shrink: 0;
+    }
+
+    .logo {
+        order: 1;
     }
 
     .header-actions .login {
@@ -3133,5 +3189,111 @@ nav a:hover, nav a.active {
         gap: 18px;
         flex-wrap: wrap;
         justify-content: center;
+    }
+}
+
+/* Footer responsive layout */
+@media (max-width: 900px) {
+    .site-footer {
+        padding-top: 56px;
+    }
+
+    .footer-grid {
+        grid-template-columns: minmax(0, 1.2fr) repeat(2, minmax(0, 1fr));
+        gap: 36px 28px;
+    }
+
+    .footer-brand,
+    .footer-office {
+        grid-column: 1 / -1;
+    }
+
+    .footer-brand > p {
+        max-width: 360px;
+    }
+
+    .footer-office {
+        margin-top: 0;
+    }
+
+    .footer-office .address {
+        max-width: 620px;
+    }
+
+    .newsletter-form input {
+        min-width: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .site-footer {
+        padding-top: 46px;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 30px 20px;
+        padding-bottom: 36px;
+    }
+
+    .footer-logo {
+        font-size: 22px;
+    }
+
+    .footer-brand {
+        gap: 16px;
+    }
+
+    .footer-brand > p,
+    .footer-office .address {
+        max-width: none;
+        font-size: 14px;
+    }
+
+    .footer-col h4 {
+        font-size: 16px;
+        margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+        gap: 10px;
+    }
+
+    .footer-col ul li a,
+    .footer-office .address {
+        font-size: 14px;
+    }
+
+    .footer-office {
+        grid-column: 1 / -1;
+    }
+
+    .newsletter-form {
+        width: 100%;
+    }
+
+    .footer-bottom {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px 12px;
+        padding: 24px 0;
+    }
+
+    .footer-bottom-left,
+    .footer-bottom-right {
+        justify-content: center;
+        gap: 0;
+    }
+
+    .footer-bottom-left a,
+    .footer-bottom-right a {
+        font-size: 13px;
+        text-align: center;
+    }
+
+    .footer-copyright {
+        grid-column: 1 / -1;
+        font-size: 12px;
+        text-align: center;
     }
 }
